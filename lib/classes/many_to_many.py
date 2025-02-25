@@ -16,6 +16,8 @@ class Article:
     def title(self, title_value):
         if (not hasattr(self, 'title')) and (type(title_value) == str) and (5 <= len(title_value) <= 50):
             self._title = title_value
+        else:
+            raise Exception
 
     @property
     def author_getter(self):
@@ -25,6 +27,8 @@ class Article:
     def author(self, author_value):
         if isinstance(author_value, Author):
             self._author = author_value
+        else:
+            raise Exception
 
     @property
     def magazine_getter(self):
@@ -34,7 +38,8 @@ class Article:
     def magazine(self, magazine_value):
         if (isinstance(magazine_value, Magazine)):
             self._magazine = magazine_value
-
+        else:
+            raise Exception
 
 class Author:
     def __init__(self, name):
@@ -48,6 +53,8 @@ class Author:
     def name(self, name_value):
         if (not hasattr(self, 'name')) and (type(name_value) == str) and (0 < len(name_value)):
             self._name = name_value
+        else:
+            raise Exception
 
     # Relationship: 1 Auther has many articles (1-to-Many Relationship):
     def articles(self):
@@ -80,6 +87,8 @@ class Magazine:
     def name(self, name_value):
         if (type(name_value) == str) and (2 <= len(name_value) <= 16):
             self._name = name_value
+        else:
+            raise Exception
 
     @property
     def category_getter(self):
@@ -89,6 +98,8 @@ class Magazine:
     def category(self, category_value):
         if (type(category_value) == str) and (0 < len(category_value)):
             self._category = category_value
+        else:
+            raise Exception
 
     # Relationship: 1 Magazine has many articles (1-to-Many Relationship)
     def articles(self):

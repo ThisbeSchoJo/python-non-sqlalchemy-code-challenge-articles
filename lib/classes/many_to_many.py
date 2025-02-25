@@ -67,6 +67,7 @@ class Author:
         return num_of_articles_by_author
 
 class Magazine:
+
     def __init__(self, name, category):
         self.name = name
         self.category = category
@@ -117,3 +118,15 @@ class Magazine:
             return True
         else:
             return False
+        
+    # Advanced Deliverable
+    @classmethod
+    def top_publisher(self):
+         # Check the magazines in Articles.all
+        publisher_list = [article.magazine for article in Article.all]
+        if len(publisher_list) == 0:
+            return None
+        else:
+            return max(publisher_list, key=lambda p: len(p.articles()))
+
+
